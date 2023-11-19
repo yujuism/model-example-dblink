@@ -1,4 +1,4 @@
-export { User } from './User.model'
-export { Post } from './Post.model'
-export { Comment } from './Comment.model'
-export { Like } from './Like.model'
+export { Employee } from './Employee.model'
+export { Department } from './Department.model'
+export { Project } from './Project.model'
+export { Task } from './Task.model'

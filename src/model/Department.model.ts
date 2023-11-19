@@ -7,15 +7,14 @@ import {
   UpdatedAt,
   DeletedAt,
   Sequelize,
-  BelongsTo,
-  ForeignKey,
+  HasMany,
   Index,
 } from 'sequelize-typescript'
-import { User } from './User.model'
-import { Post } from './Post.model'
+import { Employee } from './Employee.model'
+import { Project } from './Project.model'
 
-@Table({ modelName: 'Comment', tableName: 'comment' })
-export class Comment extends Model {
+@Table({ modelName: 'Department', tableName: 'department' })
+export class Department extends Model {
   @Index({ unique: true })
   @Column({
     type: DataType.UUID,
@@ -42,23 +41,11 @@ export class Comment extends Model {
   deleted_at: Date
 
   @Column
-  text: string
+  name: string
 
-  @ForeignKey(() => User)
-  @Column({
-    type: DataType.UUID,
-  })
-  id_user: string
+  @HasMany(() => Employee)
+  Employees: Employee[]
 
-  @BelongsTo(() => User)
-  User: User
-
-  @ForeignKey(() => Post)
-  @Column({
-    type: DataType.UUID,
-  })
-  id_post: string
-
-  @BelongsTo(() => Post)
-  Post: Post
+  @HasMany(() => Project)
+  Projects: Project[]
 }

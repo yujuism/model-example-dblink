@@ -9,15 +9,13 @@ import {
   Sequelize,
   BelongsTo,
   ForeignKey,
-  HasMany,
   Index,
 } from 'sequelize-typescript'
-import { User } from './User.model'
-import { Comment } from './Comment.model'
-import { Like } from './Like.model'
+import { Project } from './Project.model'
+import { Employee } from './Employee.model'
 
-@Table({ modelName: 'Post', tableName: 'post' })
-export class Post extends Model {
+@Table({ modelName: 'Task', tableName: 'task' })
+export class Task extends Model {
   @Index({ unique: true })
   @Column({
     type: DataType.UUID,
@@ -44,23 +42,23 @@ export class Post extends Model {
   deleted_at: Date
 
   @Column
-  title: string
+  name: string
 
-  @Column
-  content: string
-
-  @ForeignKey(() => User)
+  @ForeignKey(() => Project)
   @Column({
     type: DataType.UUID,
   })
-  id_user: string
+  project_id: string
 
-  @BelongsTo(() => User)
-  User: User
+  @BelongsTo(() => Project)
+  Project: Project
 
-  @HasMany(() => Comment)
-  Comments: Comment[]
+  @ForeignKey(() => Employee)
+  @Column({
+    type: DataType.UUID,
+  })
+  employee_id: string
 
-  @HasMany(() => Like)
-  Likes: Like[]
+  @BelongsTo(() => Employee)
+  Employee: Employee
 }

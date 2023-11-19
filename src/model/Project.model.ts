@@ -11,11 +11,10 @@ import {
   ForeignKey,
   Index,
 } from 'sequelize-typescript'
-import { User } from './User.model'
-import { Post } from './Post.model'
+import { Department } from './Department.model'
 
-@Table({ modelName: 'Like', tableName: 'like' })
-export class Like extends Model {
+@Table({ modelName: 'Project', tableName: 'project' })
+export class Project extends Model {
   @Index({ unique: true })
   @Column({
     type: DataType.UUID,
@@ -41,21 +40,15 @@ export class Like extends Model {
   @DeletedAt
   deleted_at: Date
 
-  @ForeignKey(() => User)
+  @Column
+  name: string
+
+  @ForeignKey(() => Department)
   @Column({
     type: DataType.UUID,
   })
-  id_user: string
+  department_id: string
 
-  @BelongsTo(() => User)
-  User: User
-
-  @ForeignKey(() => Post)
-  @Column({
-    type: DataType.UUID,
-  })
-  id_post: string
-
-  @BelongsTo(() => Post)
-  Post: Post
+  @BelongsTo(() => Department)
+  Department: Department
 }
