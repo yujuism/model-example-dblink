@@ -10,8 +10,10 @@ import {
   Index,
   ForeignKey,
   BelongsTo,
+  HasMany,
 } from 'sequelize-typescript'
 import { Department } from './Department.model'
+import { Task } from './Task.model'
 
 @Table({ modelName: 'Employee', tableName: 'employee' })
 export class Employee extends Model {
@@ -58,4 +60,7 @@ export class Employee extends Model {
 
   @BelongsTo(() => Department)
   Department: Department
+
+  @HasMany(() => Task)
+  Task: Task
 }
