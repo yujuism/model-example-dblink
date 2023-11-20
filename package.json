@@ -1,6 +1,6 @@
 {
   "name": "model-example-dblink",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,7 +13,7 @@
     "prepublish": "npm run build"
   },
   "author": "yujuism",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.7.6",
     "@types/sequelize": "^4.28.14",

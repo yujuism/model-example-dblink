@@ -62,5 +62,5 @@ export class Employee extends Model {
   Department: Department
 
   @HasMany(() => Task)
-  Task: Task
+  Tasks: Task[]
 }

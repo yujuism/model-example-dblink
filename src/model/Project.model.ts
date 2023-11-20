@@ -55,5 +55,5 @@ export class Project extends Model {
   Department: Department
 
   @HasMany(() => Task)
-  Task: Task
+  Tasks: Task[]
 }
